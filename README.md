@@ -13,7 +13,6 @@ A comprehensive system to detect fraudulent transactions in financial datasets u
 - [Usage](#usage)
 - [Results](#results)
 - [Business Insights & Recommendations](#business-insights--recommendations)
-- [Contributing](#contributing)
 - [License](#license)
 
 ---
@@ -40,8 +39,6 @@ The dataset contains transaction records with the following characteristics:
 - Target: `isFraud` (1 = Fraud, 0 = Non-Fraud)
 - Highly imbalanced: Fraud cases are rare compared to non-fraud transactions
 
-**Note:** Ensure the dataset `Fraud.csv` is in the repository or provide a link to a public dataset.
-
 ---
 
 ## Key Features
@@ -62,16 +59,65 @@ The following models are implemented and compared:
 2. **LightGBM** - Gradient boosting framework optimized for speed and performance
 3. **XGBoost** - Gradient boosting library for high predictive accuracy
 4. **Naive Bayes** - Probabilistic model (baseline)
-5. **Support Vector Machine (SVM)** - Linear kernel for faster training
 
 **Metrics Evaluated:** Accuracy, Precision, Recall, F1-score, AUC-ROC
 
 ---
 
-## Installation
+## Results
 
-Clone the repository:
+| Model                 | Accuracy  | Precision | Recall   | F1-Score | AUC      |
+|-----------------------|----------|-----------|---------|----------|----------|
+| Logistic Regression   | 0.999891 | 0.923901  | 0.997565 | 0.959321 | 0.999962 |
+| LightGBM              | 0.999969 | 0.978507  | 0.997565 | 0.987945 | 0.999921 |
+| XGBoost               | 0.999869 | 0.908638  | 0.998783 | 0.951580 | 0.999739 |
+| Naive Bayes           | 0.992910 | 0.153796  | 0.997565 | 0.266504 | 0.999039 |
+
+---
+
+## Business Insights & Recommendations
+
+- Monitor specific transaction types: Focus on high-risk types.
+- Implement real-time fraud detection: Deploy the best-performing models (LightGBM/Logistic Regression).
+- Strengthen verification: Add extra checks for suspicious transactions.
+- Regular model retraining: Keep models updated with new data for high accuracy.
+
+**Note:** Naive Bayes has high recall but low precision, meaning it flags many non-fraud transactions as fraud.
+
+---
+
+## Usage
+
+### 1. Create a Virtual Environment
 
 ```bash
-git clone https://github.com/yourusername/financial-fraud-detection.git
-cd financial-fraud-detection
+python -m venv venv  
+source venv/bin/activate   # On Windows: venv\Scripts\activate
+```
+## Installation 
+
+### 2. Installing requirements
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Clone the Repository
+```bash
+git clone https://github.com/DhruviGaur30/Financial-Fraud-Detection-ML.git
+cd Financial-Fraud-Detection-ML
+```
+### 4. Set up and Usage
+
+1. Place Fraud.csv in the project directory.
+2. Run the Jupyter notebook:
+3. jupyter notebook fraud_detection_accredian.ipynb
+4. Follow the notebook steps to:
+-Preprocess the data
+-Train multiple models
+-Evaluate model performance
+
+---
+
+### License
+
+This project is open-source and available under the MIT License.
